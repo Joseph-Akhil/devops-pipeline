@@ -1,26 +1,35 @@
 pipeline {
-agent any
+    agent any
 
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t devops-app .'
+            }
+        }
 
+        stage('Run Container Test') {
+            steps {
+                echo 'Running container test...'
+                sh 'docker run -d --name test-container devops-app'
+            }
+        }
 
-stage('Build Docker Image') {
-steps {
-sh 'docker build -t devops-app:1.0 .'
-}
-}
+        stage('Cleanup Test Container') {
+            steps {
+                echo 'Cleaning up container...'
+                sh 'docker rm -f test-container || true'
+            }
+        }
+    }
 
-
-stage('Run Container Test') {
-steps {
-sh 'docker run -d -p 8081:80 --name test-app devops-app:1.0'
-}
-}
-
-
-stage('Cleanup Test Container') {
-steps {
-sh 'docker rm -f test-app || true'
-}
-}
-}
+    post {
+        success {
+            echo 'Pipeline completed successfully 🎉'
+        }
+        failure {
+            echo 'Pipeline failed ❌'
+        }
+    }
 }
