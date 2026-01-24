@@ -10,11 +10,15 @@ pipeline {
         }
 
         stage('Run Container Test') {
-            steps {
-                echo 'Running container test...'
-                sh 'docker run -d --name test-container devops-app'
-            }
-        }
+    steps {
+        echo 'Running container test...'
+        sh '''
+        docker rm -f test-container || true
+        docker run -d -p 8081:80 --name test-container devops-app
+        '''
+    }
+}
+
 
         stage('Cleanup Test Container') {
             steps {
