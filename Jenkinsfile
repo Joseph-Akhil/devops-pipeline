@@ -2,13 +2,6 @@ pipeline {
 agent any
 
 
-stages {
-stage('Checkout') {
-steps {
-git url: '/d/DevOps-Lab/central-git/app.git'
-}
-}
-
 
 stage('Build Docker Image') {
 steps {
