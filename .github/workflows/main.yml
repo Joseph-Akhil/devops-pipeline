@@ -18,6 +18,6 @@ jobs:
     - name: 'Trigger DevOps release pipeline'
       uses: Azure/pipelines@releases/v1
       with:
-        azure-devops-project-url: 'https://dev.azure.com/adm-jptr/jptr/_build?definitionId=1'
+        azure-devops-project-url: 'azure-devops-project-url: https://dev.azure.com/adm-jptr/jptr'
         azure-pipeline-name: 'Joseph-Akhil.devops-pipeline'
         azure-devops-token: '${{ secrets.AZURE_DEVOPS_PAT }}'
