@@ -20,4 +20,4 @@ jobs:
       with:
         azure-devops-project-url: 'https://dev.azure.com/adm-jptr/jptr/_build?definitionId=1'
         azure-pipeline-name: 'Joseph-Akhil.devops-pipeline'
-        azure-devops-token: '6FGFkucm9313N92v1mwIJ1E7qXjSku0mPSMQNlmtwkAp1j4GTx8bJQQJ99CFACAAAAAgZJINAAASAZDOetZI'
+        azure-devops-token: 'EEHmDLE3teey4J8J6Tggtth9W43TieXAQlyKZBrjw0StKMBJjqetJQQJ99CFACAAAAAgZJINAAASAZDO31yK'
