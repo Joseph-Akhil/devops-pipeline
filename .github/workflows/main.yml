@@ -1,0 +1,23 @@
+name: Trigger Azure DevOps pipeline
+
+on: push
+
+jobs:
+  build-in-github:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@main
+              
+    # Additional build steps
+    
+  deploy-in-devops:
+    needs: build-in-github
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Trigger DevOps release pipeline'
+      uses: Azure/pipelines@releases/v1
+      with:
+        azure-devops-project-url: 'https://dev.azure.com/adm-jptr/jptr/_build?definitionId=1'
+        azure-pipeline-name: 'Joseph-Akhil.devops-pipeline'
+        azure-devops-token: '6FGFkucm9313N92v1mwIJ1E7qXjSku0mPSMQNlmtwkAp1j4GTx8bJQQJ99CFACAAAAAgZJINAAASAZDOetZI'
